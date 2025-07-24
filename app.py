@@ -3,7 +3,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return "Hello from Railway!"
+    return "Hello 老哥，這是用python flask寫的!"
 
 if __name__ == "__main__":
     import os
