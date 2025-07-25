@@ -3,7 +3,7 @@ from app.models import db, Message
 
 board_bp = Blueprint('board', __name__)
 
-@board_bp.route("/",methods=["GET", "POST"])
+@board_bp.route("/board",methods=["GET", "POST"])
 def board():
     if request.method == "POST":
         data = request.get_json()
