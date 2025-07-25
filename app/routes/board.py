@@ -6,15 +6,11 @@ board_bp = Blueprint('board', __name__)
 @board_bp.route("/board",methods=["GET", "POST"])
 def board():
     if request.method == "POST":
-        data = request.get_json()
-        new_msg = Message(content=data["content"])
+        name = request.form["name"]
+        content = request.form["content"]
+        new_msg = Message(name=name, content=content)
         db.session.add(new_msg)
         db.session.commit()
-        return jsonify({"status": "success"}), 201
 
-    messages = Message.query.all()
-    return jsonify([{"content": m.content} for m in messages])
-    
-    
-
-
+    all_msgs = Message.query.all()
+    return render_template("board.html", messages=all_msgs)
