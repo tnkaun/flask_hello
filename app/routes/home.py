@@ -3,22 +3,8 @@ from app.models import db, Message
 
 home_bp = Blueprint('home', __name__)
 
-@home_bp.route("/",methods=["GET", "POST"])
+@home_bp.route("/")
 def home():
-    if request.method == "POST":
-        data = request.get_json()
-        new_msg = Message(content=data["content"])
-        db.session.add(new_msg)
-        db.session.commit()
-        return jsonify({"status": "success"}), 201
-
-    messages = Message.query.all()
-    return jsonify([{"content": m.content} for m in messages])
-    
-    
-    
-    
-    
-    #return render_template("index.html")
+    return render_template("index.html")
 
 
