@@ -7,13 +7,13 @@ home_bp = Blueprint('home', __name__)
 def home():
     if request.method == "POST":
         data = request.get_json()
-        new_msg = Message(name=data["name"], content=data["content"])
+        new_msg = Message(content=data["content"])
         db.session.add(new_msg)
         db.session.commit()
         return jsonify({"status": "success"}), 201
 
     messages = Message.query.all()
-    return jsonify([{"name": m.name, "content": m.content} for m in messages])
+    return jsonify([{"content": m.content} for m in messages])
     
     
     
