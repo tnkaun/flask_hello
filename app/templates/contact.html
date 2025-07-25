@@ -1,8 +1,6 @@
-<!DOCTYPE html>
-<html lang="zh-Hant">
-<head>
-    <meta charset="UTF-8">
-    <title>Ellery 的彩色世界</title>
+{% extends "base.html" %}
+    {% block title %}Ellery 的彩色世界{% endblock %}
+	{% block style %}
     <style>
         body {
             background-color: #fdf6e3;
@@ -32,8 +30,9 @@
             100% { transform: translateY(0); }
         }
     </style>
-</head>
-<body>
+	{% endblock %}
+
+{% block content %}
 
     <!-- 多個不同樣式的我是Ellery -->
     <script>
@@ -50,6 +49,4 @@
             document.body.appendChild(div);
         }
     </script>
-
-</body>
-</html>
+{% endblock %}
