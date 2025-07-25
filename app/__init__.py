@@ -2,7 +2,7 @@ from flask import Flask
 from app.routes.home import home_bp
 from app.routes.about import about_bp
 from app.routes.contact import contact_bp
-from app.routes.contact import board_bp
+from app.routes.board import board_bp
 from flask_sqlalchemy import SQLAlchemy
 from config import Config
 from app.extensions import db
