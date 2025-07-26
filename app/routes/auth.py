@@ -29,7 +29,7 @@ def login():
         if user and user.check_password(password):
             session['user_id'] = user.id
             flash('登入成功')
-            return redirect(url_for('home'))
+            return redirect(url_for('home.home'))
         flash('帳號或密碼錯誤')
     return render_template('login.html')
 
