@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template,request, jsonify
-from app.models import db, Message
+from app.models import Message
+from app.extensions import db
 
 board_bp = Blueprint('board', __name__)
 
