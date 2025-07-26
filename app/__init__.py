@@ -14,7 +14,7 @@ def create_app():
     app.config.from_object(Config)
     db.init_app(app)
     with app.app_context():
-        
+        db.drop_all()
         db.create_all()
     app.register_blueprint(home_bp)
     app.register_blueprint(about_bp)
