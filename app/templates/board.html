@@ -30,6 +30,9 @@
                     <small class="text-muted">{{ msg.timestamp.strftime('%Y-%m-%d %H:%M') if msg.timestamp else '' }}</small>
                 </div>
                 <p class="mt-2">{{ msg.content }}</p>
+                <form method="POST" action="{{ url_for('board.delete_msg', msg_id=msg.id) }}" style="display:inline;">
+                 <button class="btn btn-sm btn-danger" type="submit">刪除</button>
+                 </form>
             </div>
         {% endfor %}
     </div>
