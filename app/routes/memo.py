@@ -12,7 +12,7 @@ def memo():
        db.session.add(new_msg)
        db.session.commit()
 
-    all_msgs = Memo.query.all()
-    return render_template("memo.html", messages=all_msgs)
+    all_memos = Memo.query.all()
+    return render_template("memo.html", memos=all_memos)
 
 
