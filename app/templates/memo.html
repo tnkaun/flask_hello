@@ -14,6 +14,10 @@
         {% for memo in memos %}
         <li class="list-group-item d-flex justify-content-between align-items-center">
             {{ memo.content }}
+            <form method="POST" action="{{ url_for('memo.delete_memo', memo_id=memo.id) }}" style="display:inline;">
+                 <button class="btn btn-sm btn-danger" type="submit">刪除</button>
+            </form>
+
         </li>
         {% endfor %}
     </ul>
