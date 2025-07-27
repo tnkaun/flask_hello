@@ -2,21 +2,34 @@
 {% block title %}留言板{% endblock %}
 
 {% block content %}
-    <h1 style="text-align: center;">留言板</h1>
+    <h1 class="text-center mb-4"><i class="bi bi-chat-left-dots"></i> 留言板</h1>
 
-    <form method="POST" class="message-form">
-        <input type="text" name="name" placeholder="你的名字" required>
-        <textarea name="content" placeholder="留言內容" required></textarea>
-        <button type="submit">送出留言</button>
+    <form method="POST" class="message-form shadow-sm p-4 bg-light rounded">
+        <div class="mb-3">
+            <label for="name" class="form-label">你的名字</label>
+            <input type="text" name="name" class="form-control" id="name" placeholder="請輸入名稱" required>
+        </div>
+        <div class="mb-3">
+            <label for="content" class="form-label">留言內容</label>
+            <textarea name="content" class="form-control" id="content" placeholder="寫點什麼吧..." rows="4" required></textarea>
+        </div>
+        <div class="text-end">
+            <button type="submit" class="btn btn-primary">
+                <i class="bi bi-send"></i> 送出留言
+            </button>
+        </div>
     </form>
 
-    <hr>
+    <hr class="my-5">
 
     <div class="message-list">
         {% for msg in messages %}
-            <div class="message-card">
-                <p><strong>{{ msg.name }}</strong></p>
-                <p>{{ msg.content }}</p>
+            <div class="message-card shadow-sm bg-white p-3 rounded mb-3">
+                <div class="d-flex justify-content-between">
+                    <strong class="text-primary"><i class="bi bi-person-fill"></i> {{ msg.name }}</strong>
+                    <small class="text-muted">{{ msg.timestamp.strftime('%Y-%m-%d %H:%M') if msg.timestamp else '' }}</small>
+                </div>
+                <p class="mt-2">{{ msg.content }}</p>
             </div>
         {% endfor %}
     </div>
@@ -24,57 +37,9 @@
 
 {% block style %}
 <style>
-.message-form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    max-width: 600px;
-    margin: 0 auto 2rem auto;
-}
-
-.message-form input[type="text"],
-.message-form textarea {
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    resize: vertical;
-}
-
-.message-form textarea {
-    min-height: 100px;
-}
-
-.message-form button {
-    align-self: flex-end;
-    background-color: #0066cc;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 6px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.message-form button:hover {
-    background-color: #004a99;
-}
-
 .message-list {
     max-width: 700px;
     margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.message-card {
-    background-color: #f0f8ff;
-    padding: 15px;
-    border-left: 5px solid #66b3ff;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 </style>
 {% endblock %}
