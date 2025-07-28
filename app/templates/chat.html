@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}聊天室{% endblock %}
+
+{% block content %}
+<h2><i class="bi bi-chat-dots"></i> 線上聊天室</h2>
+<hr>
+<ul id="messages" style="list-style: none; padding: 0;"></ul>
+<input type="text" id="myMessage" placeholder="輸入訊息..." class="form-control mb-2" />
+<button onclick="sendMessage()" class="btn btn-primary">送出</button>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.3.2/socket.io.min.js"></script>
+<script>
+    var socket = io();
+
+    socket.on("connect", function() {
+        console.log("已連線到伺服器");
+    });
+
+    socket.on("message", function(data) {
+        const ul = document.getElementById("messages");
+        const li = document.createElement("li");
+        li.innerHTML = `<strong>${data.user}</strong>：${data.msg}`;
+        ul.appendChild(li);
+    });
+
+    function sendMessage() {
+        const input = document.getElementById("myMessage");
+        const msg = input.value;
+        if (msg.trim() !== "") {
+            socket.send(msg);
+            input.value = "";
+        }
+    }
+</script>
+{% endblock %}

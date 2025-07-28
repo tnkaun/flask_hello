@@ -28,6 +28,7 @@ def login():
         user = User.query.filter_by(username=username).first()
         if user and user.check_password(password):
             session['user_id'] = user.id
+            session["username"] = user.username
             session['role'] = user.role
             flash('登入成功')
             return redirect(url_for('home.home'))
