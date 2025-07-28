@@ -9,11 +9,12 @@ from app.routes.user import user_bp
 from config import Config
 from app.extensions import db
 from app.routes.chat import chat_bp
+from app import socketio
 
 
 def create_app():
     app = Flask(__name__)
-    
+    socketio.init_app(app)
     app.config.from_object(Config)
     db.init_app(app)
     with app.app_context():
