@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, session, redirect, url_for
 from flask_socketio import emit
-from app import socketio
+from app.extensions import socketio
 
 chat_bp = Blueprint("chat", __name__)
 
