@@ -7,6 +7,7 @@
 <hr>
 <div style="display: flex; flex-direction: column; gap: 10px;">
     <p><strong>會員名稱：</strong> {{ user.username }}</p>
+    <p><strong>匿    稱：</strong> {{ user.nickname if user.nickname else "未提供" }}</p>
     <p><strong>電子郵件：</strong> {{ user.email if user.email else "未提供" }}</p>
     <p><strong>註冊時間：</strong> {{ user.created_at.strftime('%Y-%m-%d %H:%M') if user.created_at else "無紀錄" }}</p>
 </div>
