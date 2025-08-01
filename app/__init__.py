@@ -10,12 +10,16 @@ from config import Config
 from app.extensions import db
 from app.routes.chat import chat_bp
 from app.extensions import socketio
+from app.routes.upload import upload_bp
+import os
 
 
 def create_app():
     app = Flask(__name__)
+    
     socketio.init_app(app)
     app.config.from_object(Config)
+    os.makedirs(app.config["UPLOAD_FOLDER"], exist_ok=True)
     db.init_app(app)
     with app.app_context():
         #db.drop_all()
@@ -28,5 +32,6 @@ def create_app():
     app.register_blueprint(memo_bp)
     app.register_blueprint(user_bp)
     app.register_blueprint(chat_bp)
+    app.register_blueprint(upload_bp)
     
     return app

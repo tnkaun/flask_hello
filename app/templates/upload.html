@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}檔案上傳與下載系統{% endblock %}
+{% block content %}
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul>
+          {% for message in messages %}
+            <li>{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+    <p></p>
+    <h1>上傳檔案</h1>
+
+
+    <form method="post" enctype="multipart/form-data">
+        <input type="file" name="file">
+        
+        <input type="submit" value="上傳">
+    </form>
+<hr>
+
+    <h2>已上傳檔案</h2>
+    <ul>
+        {% for file in files %}
+            <li><a href="{{ url_for('upload.download_file', filename=file) }}">{{ file }}</a></li>
+        {% else %}
+            <li>尚無檔案</li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}
+
