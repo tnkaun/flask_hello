@@ -28,3 +28,10 @@ class User(db.Model):
 class Memo(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     content = db.Column(db.String(300), nullable=False)
+
+class RecommendedSite(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=False)
+    url = db.Column(db.String(300), nullable=False)
+    description = db.Column(db.String(300))
+    image = db.Column(db.String(300))  # 圖片 URL 或 static 路徑
