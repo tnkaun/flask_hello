@@ -11,6 +11,7 @@ from app.extensions import db
 from app.routes.chat import chat_bp
 from app.extensions import socketio
 from app.routes.upload import upload_bp
+from app.routes.recommend import recommend_bp
 import os
 
 
@@ -33,5 +34,6 @@ def create_app():
     app.register_blueprint(user_bp)
     app.register_blueprint(chat_bp)
     app.register_blueprint(upload_bp)
+    app.register_blueprint(recommend_bp)
     
     return app

@@ -15,7 +15,7 @@ def recommend():
         if not url.startswith("http://") and not url.startswith("https://"):
             return jsonify({"error": "URL must start with http:// or https://"}), 400
         if not image:
-            image = "default_image.png"
+            image = "recommend.png"
         if not description:
             description = "No description provided"
         # Create a new recommended site entry
