@@ -6,9 +6,11 @@ __pycache__/
 
 # 虛擬環境
 venv/
-.env
 
 # VS Code 設定
 .vscode/
+
+#資料庫
+instance
 
 
